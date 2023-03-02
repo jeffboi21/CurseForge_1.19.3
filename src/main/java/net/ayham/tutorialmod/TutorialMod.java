@@ -1,6 +1,7 @@
 package net.ayham.tutorialmod;
 
 import com.mojang.logging.LogUtils;
+import net.ayham.tutorialmod.item.ModItems;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -15,16 +16,18 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(tutorialmod.MOD_ID)
-public class tutorialmod
+@Mod(TutorialMod.MOD_ID)
+public class TutorialMod
 {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "tutorialmod";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
-    public tutorialmod()
+    public TutorialMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModItems.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
