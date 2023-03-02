@@ -1,6 +1,7 @@
 package net.ayham.tutorialmod;
 
 import com.mojang.logging.LogUtils;
+import net.ayham.tutorialmod.item.ModCreativeModeTabs;
 import net.ayham.tutorialmod.item.ModItems;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -47,18 +48,21 @@ public class TutorialMod
 
     private void addCreative(CreativeModeTabEvent.BuildContents event)
     {
-        if (event.getTab() == CreativeModeTabs.INGREDIENTS) {
+        if (event.getTab() == ModCreativeModeTabs.TUTORIAL_TAB) {
             event.accept(ModItems.MONEY);
+        }
+        if (event.getTab() == ModCreativeModeTabs.TUTORIAL_TAB) {
+            event.accept(ModItems.STACK_OF_MONEY);
+
+
         }
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-        }
-    }
+        @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+        public static class ClientModEvents {
+            @SubscribeEvent
+            public static void onClientSetup(FMLClientSetupEvent event) {
+            }
+      }
 }

@@ -13,6 +13,8 @@ public class ModItems {
             DeferredRegister.create(ForgeRegistries.ITEMS, TutorialMod.MOD_ID);
     public static final RegistryObject<Item> MONEY = ITEMS.register("money",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> STACK_OF_MONEY = ITEMS.register("stack_of_money",
+            () -> new Item(new Item.Properties()));
 
     public static void  register(IEventBus eventBus)
     {
