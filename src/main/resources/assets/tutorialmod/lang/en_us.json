@@ -2,5 +2,7 @@
   "item.tutorialmod.money": "Money",
   "item.tutorialmod.stack_of_money": "Stack of Money",
 
+  "block.tutorialmod.block_of_money": "Block_of_money",
+
   "creativemodetab.tutorialtab": "Economy"
 }

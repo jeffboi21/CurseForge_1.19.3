@@ -1,6 +1,7 @@
 package net.ayham.tutorialmod;
 
 import com.mojang.logging.LogUtils;
+import net.ayham.tutorialmod.block.ModBlocks;
 import net.ayham.tutorialmod.item.ModCreativeModeTabs;
 import net.ayham.tutorialmod.item.ModItems;
 import net.minecraft.world.item.CreativeModeTab;
@@ -31,11 +32,10 @@ public class TutorialMod
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
-
         MinecraftForge.EVENT_BUS.register(this);
-
         modEventBus.addListener(this::addCreative);
     }
 
@@ -48,12 +48,19 @@ public class TutorialMod
 
     private void addCreative(CreativeModeTabEvent.BuildContents event)
     {
-        if (event.getTab() == ModCreativeModeTabs.TUTORIAL_TAB) {
+        if(event.getTab() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.MONEY);
-        }
-        if (event.getTab() == ModCreativeModeTabs.TUTORIAL_TAB) {
             event.accept(ModItems.STACK_OF_MONEY);
+            event.accept(ModBlocks.BLOCK_OF_MONEY);
+        }
+        if(event.getTab() == ModCreativeModeTabs.TUTORIAL_TAB) {
+            event.accept(ModItems.STACK_OF_MONEY);
+            event.accept(ModItems.MONEY);
+            event.accept(ModBlocks.BLOCK_OF_MONEY);
 
+        if(event.getTab() == CreativeModeTabs.OP_BLOCKS) {
+            event.accept(ModBlocks.BLOCK_OF_MONEY);
+        }
 
         }
     }
